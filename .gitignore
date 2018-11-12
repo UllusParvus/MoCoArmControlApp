@@ -1,5 +1,5 @@
-idea/
+.idea/
 build/
 moco.iml
 proguard-rules.pro
-
+local.properties
