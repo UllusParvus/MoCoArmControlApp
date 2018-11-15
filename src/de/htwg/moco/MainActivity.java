@@ -4,8 +4,10 @@ import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 import org.ros.address.InetAddressFactory;
 import org.ros.android.RosActivity;
@@ -14,6 +16,7 @@ import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
 import android.util.Log;
 import java.io.IOException;
+
 
 /**
  * @author ch721ulr@htwg-konstanz.de (Christoph Ulrich)
@@ -34,10 +37,10 @@ public class MainActivity extends RosActivity {
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.activity_main);
-    rosCameraPreviewView = (RosCameraPreviewView) findViewById(R.id.ros_camera_preview_view);
+    //rosCameraPreviewView = (RosCameraPreviewView) findViewById(R.id.ros_camera_pre//view_view);
   }
 
-  @Override
+  /*@Override
   public boolean onTouchEvent(MotionEvent event) {
     if (event.getAction() == MotionEvent.ACTION_UP) {
       int numberOfCameras = Camera.getNumberOfCameras();
@@ -59,12 +62,18 @@ public class MainActivity extends RosActivity {
     }
     return true;
   }
+  */
+
+  public void publishMessage(View view){
+    Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show();
+  }
 
   @Override
   protected void init(NodeMainExecutor nodeMainExecutor) {
     cameraId = 0;
 
-    rosCameraPreviewView.setCamera(getCamera());
+    /*rosCameraPreviewView.setCamera(getCamera());
+
     try {
       java.net.Socket socket = new java.net.Socket(getMasterUri().getHost(), getMasterUri().getPort());
       java.net.InetAddress local_network_address = socket.getLocalAddress();
@@ -76,9 +85,10 @@ public class MainActivity extends RosActivity {
       // Socket problem
       Log.e("Camera Tutorial", "socket error trying to get networking information from the master uri");
     }
+    */
 
   }
-
+  /*
   private Camera getCamera() {
     Camera cam = Camera.open(cameraId);
     Camera.Parameters camParams = cam.getParameters();
@@ -93,4 +103,5 @@ public class MainActivity extends RosActivity {
     cam.setParameters(camParams);
     return cam;
   }
+  */
 }
