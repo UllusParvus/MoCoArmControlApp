@@ -16,6 +16,7 @@ import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
 import android.util.Log;
 import java.io.IOException;
+import nxt_msgs.JointCommand;
 
 
 /**
