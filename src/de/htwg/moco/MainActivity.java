@@ -17,6 +17,7 @@ import org.ros.node.NodeMainExecutor;
 import android.util.Log;
 import java.io.IOException;
 import nxt_msgs.JointCommand;
+import org.ros.node.topic.Publisher;
 
 
 /**
@@ -26,7 +27,7 @@ import nxt_msgs.JointCommand;
 public class MainActivity extends RosActivity {
 
   private int cameraId;
-  private RosCameraPreviewView rosCameraPreviewView;
+  private JointTalker joint_0_talker;
 
   public MainActivity() {
     super("CameraTutorial", "CameraTutorial");
@@ -41,12 +42,22 @@ public class MainActivity extends RosActivity {
   }
 
   public void publishMessage(View view){
-    Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show();
+    joint_0_talker.loop();
+    Toast.makeText(this, "HELLO", Toast.LENGTH_SHORT).show();
   }
 
   @Override
   protected void init(NodeMainExecutor nodeMainExecutor) {
     cameraId = 0;
+
+    joint_0_talker = new JointTalker();
+
+    NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(getRosHostname());
+    nodeConfiguration.setMasterUri(getMasterUri());
+    nodeMainExecutor.execute(joint_0_talker, nodeConfiguration);
+
+
+
 
   }
 
