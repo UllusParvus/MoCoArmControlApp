@@ -1,21 +1,14 @@
 package de.htwg.moco;
 
-import android.hardware.Camera;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
-import org.ros.address.InetAddressFactory;
 import org.ros.android.RosActivity;
-import org.ros.android.view.camera.RosCameraPreviewView;
 import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
-import android.util.Log;
-import java.io.IOException;
 import nxt_msgs.JointCommand;
 import org.ros.node.topic.Publisher;
 
