@@ -19,11 +19,11 @@ import org.ros.node.topic.Publisher;
  */
 public class MainActivity extends RosActivity {
 
-  private int cameraId;
   private JointTalker joint_0_talker;
 
+  // TODO: Title still in work. Just changed the tutorial title
   public MainActivity() {
-    super("CameraTutorial", "CameraTutorial");
+    super("RosMindStormManipulator", "RosMindStormManipulator");
   }
 
   @Override
@@ -41,7 +41,6 @@ public class MainActivity extends RosActivity {
 
   @Override
   protected void init(NodeMainExecutor nodeMainExecutor) {
-    cameraId = 0;
 
     joint_0_talker = new JointTalker();
 
