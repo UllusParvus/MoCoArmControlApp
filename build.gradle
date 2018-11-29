@@ -9,9 +9,9 @@ android {
   compileSdkVersion 25
 
   defaultConfig {
-    minSdkVersion 10
+    minSdkVersion 14
     applicationId "htwg.moco.github.com.moco"
-    targetSdkVersion 10
+    targetSdkVersion 14
     versionCode 1
     versionName "1.0"
   }
