@@ -9,7 +9,6 @@ import android.widget.Toast;
 import org.ros.android.RosActivity;
 import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
-import nxt_msgs.JointCommand;
 import org.ros.node.topic.Publisher;
 
 
@@ -19,7 +18,8 @@ import org.ros.node.topic.Publisher;
  */
 public class MainActivity extends RosActivity {
 
-  private JointTalker joint_0_talker;
+  private JointTalker nxt_1_talker;
+  private JointTalker nxt_2_talker;
 
   // TODO: Title still in work. Just changed the tutorial title
   public MainActivity() {
@@ -35,18 +35,37 @@ public class MainActivity extends RosActivity {
   }
 
   public void publishMessage(View view){
-    joint_0_talker.loop();
+    switch(view.getId()){
+      case R.id.b_joint_0_p:
+        break;
+      case R.id.b_joint_0_m:
+        break;
+      case R.id.b_joint_1_p:
+        break;
+      case R.id.b_joint_1_m:
+        break;
+      case R.id.b_joint_2_p:
+        break;
+      case R.id.b_joint_2_m:
+        break;
+      case R.id.b_gripper_p:
+        break;
+      case R.id.b_gripper_m:
+        break;
+    }
+    nxt_1_talker.loop(1.2, "motor_1");
     Toast.makeText(this, "HELLO", Toast.LENGTH_SHORT).show();
   }
 
   @Override
   protected void init(NodeMainExecutor nodeMainExecutor) {
 
-    joint_0_talker = new JointTalker();
+    nxt_1_talker = new JointTalker();
+    nxt_2_talker = new JointTalker(2);
 
     NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(getRosHostname());
     nodeConfiguration.setMasterUri(getMasterUri());
-    nodeMainExecutor.execute(joint_0_talker, nodeConfiguration);
+    nodeMainExecutor.execute(nxt_1_talker, nodeConfiguration);
 
 
 
