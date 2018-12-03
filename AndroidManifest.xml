@@ -15,16 +15,18 @@
         android:label="@string/app_name"
         android:allowBackup="true">
         <activity
-            android:name="de.htwg.moco.MainActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape" >
+            android:name="de.htwg.moco.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="de.htwg.moco.JointControlActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity android:name="de.htwg.moco.VisualTCPControlActivity"></activity>
         <activity android:name="org.ros.android.MasterChooser" />
 
         <service android:name="org.ros.android.NodeMainExecutorService" >
