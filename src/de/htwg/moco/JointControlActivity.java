@@ -1,7 +1,6 @@
 package de.htwg.moco;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -71,6 +70,7 @@ public class JointControlActivity extends RosActivity {
     public boolean onTouch(View v, MotionEvent event) {
       int motor_positive = 1;
       String motor_name = "";
+      double motor_effort = 1.5;
       switch(v.getId()){
         case R.id.b_joint_0_m:
           motor_positive = -1;
@@ -86,6 +86,7 @@ public class JointControlActivity extends RosActivity {
           motor_positive = -1;
         case R.id.b_joint_2_p:
           motor_name = "motor_3";
+          motor_effort = 0.6;
           break;
         case R.id.b_gripper_m:
           motor_positive = -1;
@@ -96,7 +97,7 @@ public class JointControlActivity extends RosActivity {
       int action = event.getAction();
       if (MotionEvent.ACTION_DOWN == action) {
         v.setPressed(true);
-        nxt_1_talker.loop(1.5 * motor_positive, motor_name);
+        nxt_1_talker.loop(motor_effort * motor_positive, motor_name);
       }
       else if (MotionEvent.ACTION_UP == action) {
         v.setPressed(false);
