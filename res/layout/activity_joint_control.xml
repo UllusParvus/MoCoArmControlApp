@@ -37,7 +37,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
             android:text="Gripper -" />
 
         <Space
@@ -79,7 +78,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
             android:text="Joint 2 -" />
 
         <Space
@@ -121,7 +119,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
             android:text="Joint 1 -" />
 
         <Space
@@ -151,7 +148,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
             android:text="Base +" />
 
         <Space
@@ -164,7 +160,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
             android:text="Base -" />
 
         <Space
