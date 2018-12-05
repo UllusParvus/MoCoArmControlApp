@@ -67,32 +67,24 @@ public class JointControlActivity extends RosActivity {
       int motor_positive = 1;
       String motor_name = "";
       switch(v.getId()){
-        case R.id.b_joint_0_p:
-          motor_name = "motor_1";
-          break;
         case R.id.b_joint_0_m:
           motor_positive = -1;
-          motor_name = "motor_1";
-          break;
-        case R.id.b_joint_1_p:
+        case R.id.b_joint_0_p:
           motor_name = "motor_1";
           break;
         case R.id.b_joint_1_m:
           motor_positive = -1;
-          motor_name = "motor_1";
-          break;
-        case R.id.b_joint_2_p:
+        case R.id.b_joint_1_p:
           motor_name = "motor_1";
           break;
         case R.id.b_joint_2_m:
           motor_positive = -1;
-          motor_name = "motor_1";
-          break;
-        case R.id.b_gripper_p:
+        case R.id.b_joint_2_p:
           motor_name = "motor_1";
           break;
         case R.id.b_gripper_m:
           motor_positive = -1;
+        case R.id.b_gripper_p:
           motor_name = "motor_1";
           break;
       }
