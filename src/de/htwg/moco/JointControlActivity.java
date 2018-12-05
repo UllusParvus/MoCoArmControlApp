@@ -58,6 +58,11 @@ public class JointControlActivity extends RosActivity {
     b_joint_0_m.setOnTouchListener(touchListener);
     b_joint_1_p.setOnTouchListener(touchListener);
     b_joint_1_m.setOnTouchListener(touchListener);
+    b_joint_2_p.setOnTouchListener(touchListener);
+    b_joint_2_m.setOnTouchListener(touchListener);
+    b_gripper_p.setOnTouchListener(touchListener);
+    b_gripper_m.setOnTouchListener(touchListener);
+
 
   }
 
@@ -75,12 +80,12 @@ public class JointControlActivity extends RosActivity {
         case R.id.b_joint_1_m:
           motor_positive = -1;
         case R.id.b_joint_1_p:
-          motor_name = "motor_1";
+          motor_name = "motor_2";
           break;
         case R.id.b_joint_2_m:
           motor_positive = -1;
         case R.id.b_joint_2_p:
-          motor_name = "motor_1";
+          motor_name = "motor_3";
           break;
         case R.id.b_gripper_m:
           motor_positive = -1;
