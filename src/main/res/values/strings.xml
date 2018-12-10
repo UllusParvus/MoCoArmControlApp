@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string
+        name="b_gripper_p">
+        Gripper +</string>
+    <string
+        name="b_gripper_m">
+        Calibrate</string>
+    <string
+        name="b_joint_2_p">
+        Joint 2 +</string>
+    <string
+        name="b_joint_2_m">
+        Joint 2 -</string>
+    <string
+        name="b_joint_1_p">
+        Joint 1 +</string>
+    <string
+        name="b_joint_1_m">
+        Joint 1 -</string>
+    <string
+        name="b_base_p">
+        Base +</string>
+    <string
+        name="b_base_m">
+        Base -</string>
+
+</resources>
