@@ -7,4 +7,20 @@
     <string name="nav_header_author2">Christoph Ulrich</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string
+        name="b_gripper_p">Gripper +</string>
+    <string
+        name="b_gripper_m">Calibrate</string>
+    <string
+        name="b_joint_2_p">Joint 2 +</string>
+    <string
+        name="b_joint_2_m">Joint 2 -</string>
+    <string
+        name="b_joint_1_p">Joint 1 +</string>
+    <string
+        name="b_joint_1_m">Joint 1 -</string>
+    <string
+        name="b_base_p">Base +</string>
+    <string
+        name="b_base_m">Base -</string>
 </resources>

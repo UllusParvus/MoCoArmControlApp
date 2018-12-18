@@ -25,7 +25,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Gripper +" />
+            android:text="@string/b_gripper_p"/>
 
         <Space
             android:layout_width="wrap_content"
@@ -37,8 +37,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
-            android:text="Gripper -" />
+            android:text="@string/b_gripper_m" />
 
         <Space
             android:layout_width="wrap_content"
@@ -67,7 +66,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Joint 2 +" />
+            android:text="@string/b_joint_2_p" />
 
         <Space
             android:layout_width="wrap_content"
@@ -79,8 +78,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
-            android:text="Joint 2 -" />
+            android:text="@string/b_joint_2_m" />
 
         <Space
             android:layout_width="wrap_content"
@@ -109,7 +107,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Joint 1 +" />
+            android:text="@string/b_joint_1_p" />
 
         <Space
             android:layout_width="wrap_content"
@@ -121,8 +119,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
-            android:text="Joint 1 -" />
+            android:text="@string/b_joint_1_m" />
 
         <Space
             android:layout_width="wrap_content"
@@ -151,8 +148,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
-            android:text="Base +" />
+            android:text="@string/b_base_p" />
 
         <Space
             android:layout_width="wrap_content"
@@ -164,8 +160,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="publishMessage"
-            android:text="Base -" />
+            android:text="@string/b_base_m" />
 
         <Space
             android:layout_width="wrap_content"
