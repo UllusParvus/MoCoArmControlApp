@@ -4,13 +4,14 @@ dependencies {
     compile project(path: ':android_10')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:25.1.0'
 }
 
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    buildToolsVersion "27.0.1"
 
     defaultConfig {
         minSdkVersion 14

@@ -1,6 +1,9 @@
 package de.htwg.moco;
 
+import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -32,6 +35,9 @@ public class JointControlActivity extends RosActivity {
   protected void onCreate(Bundle savedInstanceState) {
     //RosCore rosCore = RosCore.newPublic(11311).st
     super.onCreate(savedInstanceState);
+
+    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    Toast.makeText(this, Float.toString(sharedPreferences.getFloat(VisualTCPControlActivity.JOINT_1_ANGLE_DEGREES, 45)), Toast.LENGTH_SHORT).show();
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.activity_joint_control);

@@ -2,6 +2,7 @@ package de.htwg.moco;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,10 +16,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.mainTextView);
-
-        Button jointControl = (Button) findViewById(R.id.buttonJointControl);
-
-        findViewById(R.id.b_gripper_m);
     }
 
     public void startControls (View view){
@@ -36,4 +33,5 @@ public class MainActivity extends Activity {
 
         }
     }
+
 }
