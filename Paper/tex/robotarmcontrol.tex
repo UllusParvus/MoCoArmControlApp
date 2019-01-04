@@ -1,0 +1,109 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{todonotes}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+    
+\begin{document}
+
+\title{App-controlled LEGO 3-DoF robotic arm\\
+{\footnotesize Project of lecture ''Mobile Computing'' (winter term 2018/2019)}
+}
+
+\author{
+\IEEEauthorblockN{Christoph Ulrich}
+\IEEEauthorblockA{%\textit{dept. name of organization (of Aff.)} \\
+\textit{HTWG Konstanz}\\
+Constance, Germany\\
+christoph.ulrich@htwg-konstanz.de}
+\and
+\IEEEauthorblockN{Benjamin Schaefer}
+\IEEEauthorblockA{%\textit{dept. name of organization (of Aff.)} \\
+\textit{HTWG Konstanz}\\
+Constance, Germany\\
+benjamin.schaefer@htwg-konstanz.de}
+}
+
+\maketitle
+
+\begin{abstract}
+it's reasonable to write this after all other sections of this paper have been completed
+\end{abstract}
+
+%\begin{IEEEkeywords}
+%component, formatting, style, styling, insert
+%\end{IEEEkeywords}\
+
+\section{Introduction / Motivation}
+\begin{itemize}
+	\item control of a robotic arm is a fundamental task in robotics - easy hands on experience for everybody to this fundamental robotic application with this paper and the created low cost LEGO 3-DoF robot arm  (incl. instructions)
+	\item application and hardware could be used in basic lecture "Grundlagen der mobilen Robotik" to better understand robot kinematics, ROS and a bit of perception
+	\item recycling of old and unused hardware of the robotics lab at the HTWG Konstanz
+	\item typical industrial applications to control a robotic arm run on more powerful hardware and often offer a complicated and - for beginners - confusing GUI, \todo[author=Christoph, inline]{insert example(s)} so we developed an easy to use mobile application for Android platforms
+	\item ROS because widely used, very modular/extensible and basic framework which almost every student starting with robotics has to get in touch with
+\end{itemize}
+\par
+\begin{itemize}
+	\item new paragraph
+	\todo[author=Christoph, inline]{description of background and main ''problem''}
+\end{itemize}
+
+
+\section{State of the Art}
+
+\todo[author=Christoph, inline]{find two or three example applications/hardware compontents, analyze and compare them, also look at mobile application programming techniques used in these works}
+\begin{itemize}
+	\item https://www.hackster.io/slantconcepts/control-arduino-robot-arm-with-android-app-1c0d96
+	\item https://www.instructables.com/id/Robot-Arm-Arduino-App/
+	\item https://www.kuka.com/en-us/products/robotics-systems/software/application-software/kuka-hrc-guide-app
+\end{itemize}
+
+
+\section{Proposed Approach}
+
+\subsection{Requirements Engineering}\label{sec:requirements}
+\todo[author=Christoph, inline]{what should the arm be able to achieve in the end? How should the app look like and which functions does it have to provide?}
+
+\subsection{Arm Construction}\label{sec:construction}
+\todo[author=Christoph, inline]{graphics, moment/transmission calculations, ... }
+
+\subsection{Algorithms}\label{sec:algorithms}
+\todo[author=Christoph, inline]{implementation of forward and backward kinematics }
+
+\subsection{App Development}\label{sec:development}
+\todo[author=Christoph, inline]{communication/process description, ROS, navigation strategy, ... }
+
+\subsection{Expected Results}\label{sec:expectedresults}
+\todo[author=Christoph, inline]{speed, accuracy, ...}
+
+\section{Results}
+
+\section{Conclusion}
+
+\section{Further Work}
+\begin{itemize}
+	\item 3D graphics in App
+	\item ...
+\end{itemize}
+
+
+\begin{thebibliography}{00}
+\bibitem{onlPrimitives} 
+Khronos - OpenGL: Primitives - Triangle Primitives,
+\\\texttt{https://www.khronos.org/opengl/wiki/Primitive}
+\end{thebibliography}
+
+\listoftodos
+
+\end{document}
