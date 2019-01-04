@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Planung und Ziele}{}% 1
+\BOOKMARK [1][-]{section.2}{Vorarbeiten}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Finden einer geeigneten Wellenfunktion}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Konzeptentwurf}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.2.1}{H\366henfeld}{subsection.2.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Dreiecke}{subsection.2.2}% 6
+\BOOKMARK [1][-]{section.3}{Implementierung auf der CPU}{}% 7
+\BOOKMARK [1][-]{section.4}{Implementierung auf der GPU}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Analyse des CPU-Codes}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Portierung nach CUDA}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Visualisierung der Wellenausbreitung mit OpenGL}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Einf\344rbung der Wasseroberfl\344che}{section.5}% 12
+\BOOKMARK [1][-]{section.6}{Auswertung}{}% 13
+\BOOKMARK [1][-]{section.7}{Optimierung}{}% 14
+\BOOKMARK [1][-]{section.8}{Fazit und Ausblick}{}% 15
+\BOOKMARK [1][-]{section.9}{Appendix}{}% 16
+\BOOKMARK [2][-]{subsection.9.1}{Meshgrid-Kernel}{section.9}% 17
+\BOOKMARK [1][-]{section*.1}{Quellenverzeichnis}{}% 18
