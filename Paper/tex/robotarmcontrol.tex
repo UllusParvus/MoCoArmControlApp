@@ -14,6 +14,8 @@
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\newcommand{\arrowright}{$\,\to\,$}
     
 \begin{document}
 
@@ -47,18 +49,23 @@ it's reasonable to write this after all other sections of this paper have been c
 
 \section{Introduction / Motivation}
 \begin{itemize}
-	\item control of a robotic arm is a fundamental task in robotics - easy hands on experience for everybody to this fundamental robotic application with this paper and the created low cost LEGO 3-DoF robot arm  (incl. instructions)
+	\item control of a robotic arm is a fundamental task in robotics - easy hands-on experience for everybody to this fundamental robotic application with this paper and the created low cost LEGO 3-DoF robot arm  (incl. instructions)
 	\item application and hardware could be used in basic lecture "Grundlagen der mobilen Robotik" to better understand robot kinematics, ROS and a bit of perception
 	\item recycling of old and unused hardware of the robotics lab at the HTWG Konstanz
 	\item typical industrial applications to control a robotic arm run on more powerful hardware and often offer a complicated and - for beginners - confusing GUI, \todo[author=Christoph, inline]{insert example(s)} so we developed an easy to use mobile application for Android platforms
 	\item ROS because widely used, very modular/extensible and basic framework which almost every student starting with robotics has to get in touch with
 \end{itemize}
 \par
-\begin{itemize}
-	\item new paragraph
-	\todo[author=Christoph, inline]{description of background and main ''problem''}
-\end{itemize}
 
+\todo[author=Christoph, inline]{new paragraph - description of background and main ''problem''}
+\begin{itemize}
+	\item which platform to choose for controlling the  arm and driving the motors (Arduino, Raspberry, etc.) - should consume as little energy as possible,  should be flexible and portable
+	\todo[author=Christoph, inline]{note that in \ref{sec:platform}}
+	\item another aspect \arrowright how should the application on the mobile device communication with the controlling device \arrowright BT, WiFi, (lost of steering commands due to radio lacks etc.)
+	\item arm construction \arrowright not too many components, not too heavy so that the motors are able to drive the arm even with more than one joint and with gripper load (to demonstrate gripping)
+	\item app \arrowright 
+\end{itemize}
+Constructing a robot arm generally leads to some difficulties.
 
 \section{State of the Art}
 
@@ -69,11 +76,13 @@ it's reasonable to write this after all other sections of this paper have been c
 	\item https://www.kuka.com/en-us/products/robotics-systems/software/application-software/kuka-hrc-guide-app
 \end{itemize}
 
-
-\section{Proposed Approach}
+\section{Proposed Approach}\label{sec:approach}
 
 \subsection{Requirements Engineering}\label{sec:requirements}
 \todo[author=Christoph, inline]{what should the arm be able to achieve in the end? How should the app look like and which functions does it have to provide?}
+
+\subsection{Platform Decision}\label{sec:platform}
+\todo[author=Christoph, inline]{Raspberry, Arduino, NXT, EV3, others?}
 
 \subsection{Arm Construction}\label{sec:construction}
 \todo[author=Christoph, inline]{graphics, moment/transmission calculations, ... }
