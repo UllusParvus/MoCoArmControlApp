@@ -85,17 +85,24 @@ Constructing a robot arm generally leads to some difficulties.
 \todo[author=Beide, inline]{Raspberry, Arduino, NXT, EV3, others?}
 
 \subsection{Arm Construction}\label{sec:construction}
-The arm was designed entirely from Lego Technic. For this purpose, 2 NXT bricks were used. In addition, 4 motors and a touch sensor were used. An NXT was used to control the two arm joints, as well as the gripper. Since the NXTs only have three ports for motors, a second NXT was needed to rotate the base.
 \begin{figure}[bt] 
 	\centering
-	\includegraphics[width=\textwidth/2]{img/arm_full}
-	\caption[caption]{caption}}
+	\includegraphics[width=\textwidth/2]{img/arm_full_circles}
+	\caption[caption]{Figure of the Lego Technic arm. The lower joint is marked in red and the upper joint in blue}}
 	\label{fig:arm_full}
 \end{figure}
-The servomotors have a built-in rotation sensor with an accuracy of 1 degree. Since these servomotors only have a torque of about 12 N.cm, a translation has been built into the wrist joint so that the motors can move the arm. For this purpose, a translation of 1/42 was used at the lower joint. The translation of the second engine was 2/25.
+The arm, which can be seen in Figure 1, was designed entirely from Lego Technic. For this purpose, 2 NXT bricks were used. In addition, 4 motors and a touch sensor were used. An NXT was used to control the two arm joints, as well as the gripper. Since the NXTs only have three ports for motors, a second NXT was needed to rotate the base.\\
+The servomotors have a built-in rotation sensor with an accuracy of 1 degree. Since these servomotors only have a torque of about 12 N.cm, a translation has been built into the wrist joint so that the motors can move the arm. For this purpose, a translation of 1/42 was used at the lower joint (red circle). The engine's ratio at the upper joint (blue circle) was 2/25.\\
 In order to keep the arm as light as possible and to relieve the engines, sensors on the arm itself were completely dispensed with. However, since the engines have to be initialized, a touch sensor has been installed on the base to initialize the first arm articulated. The initialization of the second joint was solved by the torque of the motors, as there is less weight of the arm.
 
 \subsection{Algorithms}\label{sec:algorithms}
+\begin{figure}[bt] 
+	\centering
+	\includegraphics[width=\textwidth/2]{img/calibration.png}
+	\caption[caption]{Activity diagram of the calibration process}}
+\label{fig:calibration}
+\end{figure}
+The following describes the calibration procedure, which is shown in Figure 2. Since the servomotors can only be controlled by the effort and have no encoder, the starting position of the motors is unknown. Therefore, these must be calibrated. A touch sensor is used for the lower joint. The lower motor rotates until the touch sensor responds to a touch. Then the upper arm is calibrated. Here, the engines rotate with the least force so long, with which the motors can just turn until the joint is in the final position and the engines can not turn, because the effort is too great. In order not to burden the motors unnecessarily, the calibration process is terminated as soon as a certain delta has been exceeded. Finally, the same procedure is repeated for the gripper.
 \todo[author=Christoph, inline]{implementation of forward and backward kinematics }
 
 \subsection{App Development}\label{sec:development}
