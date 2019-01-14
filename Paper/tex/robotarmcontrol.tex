@@ -85,7 +85,15 @@ Constructing a robot arm generally leads to some difficulties.
 \todo[author=Beide, inline]{Raspberry, Arduino, NXT, EV3, others?}
 
 \subsection{Arm Construction}\label{sec:construction}
-\todo[author=Benni, inline]{moment/transmission calculations, ... }
+The arm was designed entirely from Lego Technic. For this purpose, 2 NXT bricks were used. In addition, 4 motors and a touch sensor were used. An NXT was used to control the two arm joints, as well as the gripper. Since the NXTs only have three ports for motors, a second NXT was needed to rotate the base.
+\begin{figure}[bt] 
+	\centering
+	\includegraphics[width=\textwidth/2]{img/arm_full}
+	\caption[caption]{caption}}
+	\label{fig:arm_full}
+\end{figure}
+The servomotors have a built-in rotation sensor with an accuracy of 1 degree. Since these servomotors only have a torque of about 12 N.cm, a translation has been built into the wrist joint so that the motors can move the arm. For this purpose, a translation of 1/42 was used at the lower joint. The translation of the second engine was 2/25.
+In order to keep the arm as light as possible and to relieve the engines, sensors on the arm itself were completely dispensed with. However, since the engines have to be initialized, a touch sensor has been installed on the base to initialize the first arm articulated. The initialization of the second joint was solved by the torque of the motors, as there is less weight of the arm.
 
 \subsection{Algorithms}\label{sec:algorithms}
 \todo[author=Christoph, inline]{implementation of forward and backward kinematics }
