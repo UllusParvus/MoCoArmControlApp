@@ -19,7 +19,7 @@
     
 \begin{document}
 
-\title{App-controlled LEGO 3-DoF robotic arm\\
+\title{App-controlled LEGO robotic arm\\
 {\footnotesize Project of lecture ''Mobile Computing'' (winter term 2018/2019)}
 }
 
@@ -49,7 +49,7 @@ it's reasonable to write this after all other sections of this paper have been c
 
 \section{Introduction / Motivation}
 \begin{itemize}
-	\item control of a robotic arm is a fundamental task in robotics - easy hands-on experience for everybody to this fundamental robotic application with this paper and the created low cost LEGO 3-DoF robot arm  (incl. instructions)
+	\item control of a robotic arm is a fundamental task in robotics - easy hands-on experience for everybody to this fundamental robotic application with this paper and the created low cost LEGO 3-DoF (\textit{Degrees of Freedom}) robot arm  (incl. instructions)
 	\item application and hardware could be used in basic lecture "Grundlagen der mobilen Robotik" to better understand robot kinematics, ROS and a bit of perception
 	\item recycling of old and unused hardware of the robotics lab at the HTWG Konstanz
 	\item typical industrial applications to control a robotic arm run on more powerful hardware and often offer a complicated and - for beginners - confusing GUI, \todo[author=Christoph, inline]{insert example(s)} so we developed an easy to use mobile application for Android platforms
@@ -89,6 +89,46 @@ Constructing a robot arm generally leads to some difficulties.
 
 \subsection{Algorithms}\label{sec:algorithms}
 \todo[author=Christoph, inline]{implementation of forward and backward kinematics }
+\subsubsection{Kinematics}\label{sec:kinematics}
+In order to control the arm it is essential to solve either it's forward or backward kinematics. For our application, we need both problems to be solved. Users of the application should be able to directly control each joint individually (forward kinematics) as well as to move the TCP into a desired position (backward kinematics). We will first take a look at the calculation of the forward kinematics and then introduce a short geometric solution of the backward kinematics for our 3-DoF arm.
+\todo[author=Christoph, inline]{TCP - list of abbreviations may be necessary}
+\todo[author=Beide, inline]{measurement of arm dimensions}
+\par
+The goal of forward kinematics is to determine the pose (position and orientation) of the TCP for a given set of joint angles. The pose of the TCP regarding the origin of the robot arm can be described as a concatenation of $n$ transformations, where $n$ is the number of joints, of which every one has its own coordinate system. For our case $n$ is 3:
+\begin{equation}\label{eq:trans_matrix}
+T_0^3 = T_0^1 * T_1^2 * T_2^3
+\end{equation}
+where $T_i^{i-1}$ is a transformation matrix according to the \textit{Denavit-Hartenberg} convention:
+\begin{equation}\label{eq:dh-convention}
+T_i^{i-1} = Tl(0,0,d_i) * R(z, \theta_i) * Tl(a_i,0,0) * R(x, \alpha_i)
+\end{equation}
+with $Tl$ being a translation matrix, $R$ a rotation matrix, $d_i$ a translation in z, $a_i$ a translation (for prismatic joints) in x, $\theta_i$ a rotation around z and $\alpha_i$ a constant tilt angle between both joints. In our case we don't use prismatic joints and there are no constant tilt angles between the joints (they are all variable). So equation \ref{eq:dh-convention} simplifies to 
+\begin{equation}\label{eq:dh-convention-short}
+T_i^{i-1} = Tl(0,0,d_i) * R(z, \theta_i)
+\end{equation}
+By solving equation \ref{eq:dh-convention-short} we get the following transformation matrix $T_i^{i-1}$ for the forward kinematics:
+\[
+\begin{matrix}
+\cos(\theta_i) & -\sin(\theta_i) & 0 & l_i \cdot \cos(\theta_i)  \\
+\sin(\theta_i) & \cos(\theta_i) & 0 & l_i \cdot \sin(\theta_i) \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{matrix}
+\]
+Finally, one generally can get the pose of the TCP in the world coordinate system (usually that means with reference to the coordinate system of the robot's base) by multiplying the concatenated transformation matrix \ref{eq:trans_matrix} built from the set of given joint angles $\theta_i$ and the known lengths of the arm parts $l_i$ with the origin of the base:
+\begin{equation}\label{eq:tcp_goal}
+p_{tcp} = T_0^3 * \begin{pmatrix}0\\0\\0\\1\end{pmatrix}
+\end{equation}
+Note that one have to use homogeneous coordinates here. Also one should remember that $p_{tcp}$ is the pose of the TCP-origin. Usually users want to get the gripping point of their tool - in this case just add the half of the gripper length to the x-direction to the vector in equation \ref{eq:tcp_goal}.
+\\
+\par
+
+Vice versa, the goal of backward kinematics is to calculate a set of joint angles from a desired TCP-pose.
+
+\begin{itemize}
+	\item generally for actual 3 dof
+	\item visualization and control over 2 dof, separate control of base and gripper
+\end{itemize}
 
 \subsection{App Development}\label{sec:development}
 \todo[author=Christoph, inline]{communication/process description, ROS, navigation strategy, ... }
