@@ -85,7 +85,9 @@ The app should have the ability to control the arm via a graphical interface. To
 The arm should be able to lift smaller 3D printed objects.
 
 \subsection{Platform Decision}\label{sec:platform}
-\todo[author=Beide, inline]{Raspberry, Arduino, NXT, EV3, others?}
+Since the arm and the app should be used for teaching, there was a variety of hardware to choose from. In addition, one goal was to use existing and disused hardware. Thus, the decision quickly on the NXT bricks of Lego Mindstorm [1]. There are enough bricks as well as sensors and motors in the lab. In addition, from the existing Lego technology also the arm can be constructed. Since Lego Technic is made of lightweight plastic, the finished arm can also be taken to a lecture and presented.\\
+There was also a choice of Raspberry Pi's or Arduinos, but here it would have been necessary to order hardware such as motors or parts for the arm.\\
+Thus, it offered to use the Lego NXT's, since no hardware needs to be ordered here and disused hardware is used again.
 
 \subsection{Arm Construction}\label{sec:construction}
 \begin{figure}[bt] 
@@ -93,6 +95,12 @@ The arm should be able to lift smaller 3D printed objects.
 	\includegraphics[width=\textwidth/2]{img/arm_full_circles}
 	\caption[caption]{Figure of the Lego Technic arm. The lower joint is marked in red and the upper joint in blue}}
 	\label{fig:arm_full}
+\end{figure}
+\begin{figure}[bt] 
+	\centering
+	\includegraphics[width=\textwidth/2]{img/control_arm.png}
+	\caption[caption]{Activity diagram of the Arm}}
+\label{fig:activitiy_arm}
 \end{figure}
 The arm, which can be seen in Figure 1, was designed entirely from Lego Technic. For this purpose, 2 NXT bricks were used. In addition, 4 motors and a touch sensor were used. An NXT was used to control the two arm joints, as well as the gripper. Since the NXTs only have three ports for motors, a second NXT was needed to rotate the base.\\
 The servomotors have a built-in rotation sensor with an accuracy of 1 degree. Since these servomotors only have a torque of about 12 N.cm, a translation has been built into the wrist joint so that the motors can move the arm. For this purpose, a translation of 1/42 was used at the lower joint (red circle). The engine's ratio at the upper joint (blue circle) was 2/25.\\
@@ -130,9 +138,25 @@ Currently the app offers only a 2D view of the arm. For a better operation a 3D 
 Another important point would be to install more and better external sensors to achieve a higher positional accuracy of the arm.
 
 \begin{thebibliography}{00}
-\bibitem{onlPrimitives} 
-Khronos - OpenGL: Primitives - Triangle Primitives,
-\\\texttt{https://www.khronos.org/opengl/wiki/Primitive}
+\bibitem{onlLegoMindstorm} 
+Lego Mindstorm - NXT,
+\\\texttt{https://www.lego.com/de-de/mindstorms/downloads/nxt-software-download}
+\bibitem{onlROS} 
+ROS - Kinetic,
+\\\texttt{http://wiki.ros.org/kinetic/Installation}
+\bibitem{onlROS} 
+Arduino-Arm with android-app,
+\\\texttt{https://www.hackster.io/slantconcepts/control-arduino-
+	robot-arm-with-android-app-1c0d96}
+\bibitem{onlROS} 
+Robot-Arm-Arduino,
+\\\texttt{https://www.instructables.com/id/Robot-Arm-Arduino-
+	App/}
+\bibitem{onlROS} 
+Kuka-hrc-guide,
+\\\texttt{https://www.kuka.com/en-us/products/robotics-
+	systems/software/application-software/kuka-hrc-guide-
+	app}
 \end{thebibliography}
 
 \listoftodos
