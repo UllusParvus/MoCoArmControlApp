@@ -123,12 +123,24 @@ Note that one have to use homogeneous coordinates here. Also one should remember
 \\
 \par
 
-Vice versa, the goal of backward kinematics is to calculate a set of joint angles from a desired TCP-pose.
+Vice versa, the goal of backward kinematics is to calculate a set of joint angles from a desired TCP-pose. $\chi$
 
 \begin{itemize}
 	\item generally for actual 3 dof
 	\item visualization and control over 2 dof, separate control of base and gripper
 \end{itemize}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[scale=0.3]{img/kin_yaw_top_view.png}}
+	\caption{Top view of the robot. Rotation angle of base joint can be easily calculated with the arctan.}
+	\label{fig:yaw_calc}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[scale=0.3]{img/kin_q1_q2.png}}
+	\caption{Top view of the robot. Rotation angle of base joint can be easily calculated with the arctan.}
+	\label{fig:q1_q2_calc}
+\end{figure}
 
 \subsection{App Development}\label{sec:development}
 \todo[author=Christoph, inline]{communication/process description, ROS, navigation strategy, ... }
