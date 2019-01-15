@@ -30,7 +30,7 @@ public class JointControlActivity extends RosActivity {
     // TODO: Title still in work. Just changed the tutorial title
     public JointControlActivity() {
     //specify the master uri of your roscore machine here as last param
-        super("RosMindStormManipulator", "RosMindStormManipulator", URI.create("http://10.42.0.1:11311"));
+        super("RosMindStormManipulator", "RosMindStormManipulator", URI.create("http://10.42.0.33:11311"));
     }
 
     @Override
@@ -142,5 +142,6 @@ public class JointControlActivity extends RosActivity {
 
 
   }
+
 
 }
