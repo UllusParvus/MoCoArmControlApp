@@ -94,13 +94,13 @@ Thus, it offered to use the Lego NXT's, since no hardware needs to be ordered he
 \begin{figure}[bt] 
 	\centering
 	\includegraphics[width=\textwidth/2]{img/arm_full_circles}
-	\caption[caption]{Figure of the Lego Technic arm. The lower joint is marked in red and the upper joint in blue}}
+	\caption[caption]{Figure of the Lego Technic arm. The lower joint is marked in red and the upper joint in blue}
 	\label{fig:arm_full}
 \end{figure}
 \begin{figure}[bt] 
 	\centering
 	\includegraphics[width=\textwidth/2]{img/control_arm.png}
-	\caption[caption]{Activity diagram of the Arm}}
+	\caption[caption]{Activity diagram of the Arm}
 \label{fig:activitiy_arm}
 \end{figure}
 The arm, which can be seen in Figure 1, was designed entirely from Lego Technic. For this purpose, 2 NXT bricks were used. In addition, 4 motors and a touch sensor were used. An NXT was used to control the two arm joints, as well as the gripper. Since the NXTs only have three ports for motors, a second NXT was needed to rotate the base.\\
@@ -111,7 +111,7 @@ In order to keep the arm as light as possible and to relieve the engines, sensor
 \begin{figure}[bt] 
 	\centering
 	\includegraphics[width=\textwidth/2]{img/calibration.png}
-	\caption[caption]{Activity diagram of the calibration process}}
+	\caption[caption]{Activity diagram of the calibration process}
 \label{fig:calibration}
 \end{figure}
 The following describes the calibration procedure, which is shown in Figure 2. Since the servomotors can only be controlled by the effort and have no encoder, the starting position of the motors is unknown. Therefore, these must be calibrated. A touch sensor is used for the lower joint. The lower motor rotates until the touch sensor responds to a touch. Then the upper arm is calibrated. Here, the engines rotate with the least force so long, with which the motors can just turn until the joint is in the final position and the engines can not turn, because the effort is too great. In order not to burden the motors unnecessarily, the calibration process is terminated as soon as a certain delta has been exceeded. Finally, the same procedure is repeated for the gripper.
