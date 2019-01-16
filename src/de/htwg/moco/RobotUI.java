@@ -172,6 +172,7 @@ public class RobotUI extends View {
                 toast.cancel();
                 updateCoordinates();
                 this.postInvalidate();
+
             }
 
             // TODO: figure out joint constraints and implement a check here

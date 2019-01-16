@@ -31,6 +31,7 @@ public class VisualTCPControlActivity extends RosActivity {
 
     static final String JOINT_1_ANGLE_DEGREES = "joint1AngleDegrees";
     static final String JOINT_2_ANGLE_DEGREES = "joint2AngleDegrees";
+    private ArmPositionActionClient armPositionActionClient;
     RobotUI robotUI;
     private GLSurfaceView mGLView;
 
@@ -139,14 +140,13 @@ public class VisualTCPControlActivity extends RosActivity {
 
   @Override
   protected void init(NodeMainExecutor nodeMainExecutor) {
-    /*
-    nxt_1_talker = new JointTalker();
-    nxt_2_talker = new JointTalker(2);
+
+    armPositionActionClient = new ArmPositionActionClient();
 
     NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(getRosHostname());
     nodeConfiguration.setMasterUri(getMasterUri());
-    nodeMainExecutor.execute(nxt_1_talker, nodeConfiguration);
-    */
+    nodeMainExecutor.execute(armPositionActionClient, nodeConfiguration);
+
   }
 
 }
