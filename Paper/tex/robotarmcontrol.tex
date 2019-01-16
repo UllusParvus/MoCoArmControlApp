@@ -16,6 +16,8 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \newcommand{\arrowright}{$\,\to\,$}
+
+\DeclareMathOperator{\atantwo}{atan2}
     
 \begin{document}
 
@@ -123,24 +125,71 @@ Note that one have to use homogeneous coordinates here. Also one should remember
 \\
 \par
 
-Vice versa, the goal of backward kinematics is to calculate a set of joint angles from a desired TCP-pose. $\chi$
+As we saw previously, forward kinematics is a function $f$ with reference to a set of joint angles $\theta_i$. The goal of backward kinematics is to calculate a set of joint angles from a desired TCP-pose. So obviously what we are searching for is the inverse of $f$:
 
-\begin{itemize}
-	\item generally for actual 3 dof
-	\item visualization and control over 2 dof, separate control of base and gripper
-\end{itemize}
+\begin{equation}
+f^{-1}(\theta_0, \theta_1, ..., \theta_n)
+\end{equation}
+There are several possible approaches to this problem - it can be solved either by algebraic, numerical or geometrical methods. We will briefly explain a geometrical solution.
+
+We have to find the rotation angles for the three joints given a specific pose of the end-effector.
+Figure \ref{fig:yaw_calc} shows a schematic top view of the robot:
 
 \begin{figure}[htbp]
-	\centerline{\includegraphics[scale=0.3]{img/kin_yaw_top_view.png}}
-	\caption{Top view of the robot. Rotation angle of base joint can be easily calculated with the arctan.}
+	\centerline{\includegraphics[scale=0.3]{img/kin_yaw_arm_top_view.png}}
+	\caption{Schemactic top view of the robot. The two arm parts are coloured. We are searching for rotation angle $\theta$ of the base joint.}
 	\label{fig:yaw_calc}
 \end{figure}
 
+As one can see, $\theta_1$ can easily be calculated:
+\begin{equation}
+\theta_1 = \atantwo(y,x)
+\end{equation}
+
+Figure \ref{fig:q1_q2_calc} shows the schematic side view of the robot.
+
 \begin{figure}[htbp]
-	\centerline{\includegraphics[scale=0.3]{img/kin_q1_q2.png}}
-	\caption{Top view of the robot. Rotation angle of base joint can be easily calculated with the arctan.}
+	\centerline{\includegraphics[scale=0.4]{img/kin_q1_q2.png}}
+	\caption{Schematic side view of the robot. Joint angles $q_1$ and $q_2$ can be calculated with the support angles $\alpha$, $\beta$ and $\chi$.}
 	\label{fig:q1_q2_calc}
 \end{figure}
+
+First of all, $\alpha$ can be calculated by
+\begin{equation}
+\alpha = \atantwo(p_y, p_x)
+\end{equation}
+
+Then, the law of cosines is used to calculate $\beta$ and $\chi$.
+\begin{equation}
+\l_2^2 = |\textbf{p}|^2 - 2 \cdot l_1 \cdot |\textbf{p}| \cdot \cos(\beta)
+\end{equation}
+with $l_2$ being the length of arm 2. From this follows
+
+\begin{equation}
+\beta = \arccos(\frac{\l_1^2 + |\textbf{p}|^2 - l_2^2}{2 \cdot l_1 \cdot |\textbf{p}|})
+\end{equation}
+
+Furthermore
+
+\begin{equation}
+|\textbf{p}|^2 = l_2^2 + l_1^2 - 2 \cdot l_1 \cdot l_2 \cdot \cos(\chi)
+\end{equation}
+
+with $l_1$ being the length of arm 1. From this follows
+
+\begin{equation}
+\chi = \arccos(\frac{\l_1 + l_2 - |\textbf{p}|^2}{2 \cdot l_1 \cdot l_2})
+\end{equation}
+
+With having calculated $\alpha$, $\beta$ and $\chi$, one can easily get $\theta_2$ and $\theta_3$:
+
+\begin{equation}
+\theta_2 = \alpha - \beta
+\end{equation}
+
+\begin{equation}
+\theta_3 = \pi - \chi
+\end{equation}
 
 \subsection{App Development}\label{sec:development}
 \todo[author=Christoph, inline]{communication/process description, ROS, navigation strategy, ... }
