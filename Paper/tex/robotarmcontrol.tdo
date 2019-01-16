@@ -1,10 +1,9 @@
 \contentsline {todo}{insert example(s)}{1}{section*.1}
 \contentsline {todo}{new paragraph - description of background and main ''problem''}{1}{section*.2}
 \contentsline {todo}{note that in \ref {sec:platform}}{1}{section*.3}
-\contentsline {todo}{find two or three example applications/hardware compontents, analyze and compare them, also look at mobile application programming techniques used in these works}{1}{section*.4}
-\contentsline {todo}{what should the arm be able to achieve in the end? How should the app look like and which functions does it have to provide?}{1}{section*.5}
-\contentsline {todo}{implementation of forward and backward kinematics }{2}{section*.6}
-\contentsline {todo}{TCP - list of abbreviations may be necessary}{2}{section*.7}
-\contentsline {todo}{measurement of arm dimensions}{2}{section*.8}
-\contentsline {todo}{communication/process description, ROS, navigation strategy, ... }{3}{section*.9}
-\contentsline {todo}{speed, accuracy, ...}{3}{section*.10}
+\contentsline {todo}{what should the arm be able to achieve in the end? How should the app look like and which functions does it have to provide?}{1}{section*.4}
+\contentsline {todo}{implementation of forward and backward kinematics }{2}{section*.5}
+\contentsline {todo}{TCP - list of abbreviations may be necessary}{3}{section*.6}
+\contentsline {todo}{measurement of arm dimensions}{3}{section*.7}
+\contentsline {todo}{communication/process description, ROS, navigation strategy, ... }{3}{section*.8}
+\contentsline {todo}{speed, accuracy, ...}{3}{section*.9}

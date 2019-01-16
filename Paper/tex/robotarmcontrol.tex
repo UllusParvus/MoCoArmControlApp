@@ -40,7 +40,7 @@ benjamin.schaefer@htwg-konstanz.de}
 \maketitle
 
 \begin{abstract}
-it's reasonable to write this after all other sections of this paper have been completed
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 \end{abstract}
 
 %\begin{IEEEkeywords}
@@ -68,15 +68,9 @@ it's reasonable to write this after all other sections of this paper have been c
 Constructing a robot arm generally leads to some difficulties.
 
 \section{State of the Art}
-
-\todo[author=Beide, inline]{find two or three example applications/hardware compontents, analyze and compare them, also look at mobile application programming techniques used in these works}
-\begin{itemize}
-	\item https://ieeexplore.ieee.org/abstract/document/7192973
-	\item https://www.hackster.io/slantconcepts/control-arduino-robot-arm-with-android-app-1c0d96
-	\item https://www.instructables.com/id/Robot-Arm-Arduino-App/
-	\item https://www.kuka.com/en-us/products/robotics-systems/software/application-software/kuka-hrc-guide-app
-\end{itemize}
-
+Although current approaches such as in \cite{onlIEEEApp-Arm} already control using an app arms, but here is usually an Arduino or Raspberry Pi used to control the arm. However, no hardware that can be reused from the lab is used here, and no known robotic frameworks are used here, which makes an extension or a rebuild more work
+Arms made from Lego Technic as in \cite{onlNXT-2DOF} have already been built, but these only offer 2DOF and can only lift very light objects due to the low gear ratio. However, in order to be able to show kinematics and the problems with arms in teaching, at least 3DOF is necessary.
+Also some private projects like in \cite{onlHackster} show how to control a homemade arm via an app.
 \section{Proposed Approach}\label{sec:approach}
 
 \subsection{Requirements Engineering}\label{sec:requirements}
@@ -213,8 +207,13 @@ Kuka-hrc-guide,
 \\\texttt{https://www.kuka.com/en-us/products/robotics-
 	systems/software/application-software/kuka-hrc-guide-
 	app}
-\end{thebibliography}
+\bibitem{onlIEEEApp-Arm} 
+K. Premkumar, K. Nigel ``Smart Phone Based Robotic Arm Control Using
+Raspberry Pi, Android and Wi-Fi`` IEEE, March 2015
+\bibitem{onlNXT-2DOF} 
+Lego Technic 2DOF arm construction,
+\\\texttt{http://www.nxtprograms.com/robot_arm/steps.html}
 
-\listoftodos
+\end{thebibliography}
 
 \end{document}
