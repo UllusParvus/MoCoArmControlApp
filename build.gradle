@@ -1,10 +1,15 @@
 dependencies {
     compile 'org.ros.android_core:android_10:[0.3,0.4)'
     compile 'org.ros.rosjava_messages:nxt_msgs:1.1.0'
+    compile 'org.ros.rosjava_messages:nxt_action_msgs:0.0.0'
     compile project(path: ':android_10')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:25.1.0'
+    compile 'org.ros.rosjava_messages:actionlib_tutorials:[0.1,)'
+    compile 'org.ros.rosjava_messages:actionlib_msgs:1.12.6'
+    compile files('lib/rosjava_actionlib-0.2.0.jar')
+    compile project(path: ':android_10')
 }
 
 apply plugin: 'com.android.application'

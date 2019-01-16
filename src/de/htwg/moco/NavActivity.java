@@ -90,7 +90,6 @@ public class NavActivity extends AppCompatActivity
         } else if (id == R.id.nav_visual_tcp_control) {
             Intent visualTCPControl = new Intent(this, VisualTCPControlActivity.class);
             startActivity(visualTCPControl);
-            //startActivityForResult(visualTCPControl, 1);
 
 
         } else if (id == R.id.nav_share) {
