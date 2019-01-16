@@ -40,7 +40,7 @@ benjamin.schaefer@htwg-konstanz.de}
 \maketitle
 
 \begin{abstract}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+In this document, a method for building and controlling a robot arm using an Android APP is proposed. The Android phone and the NXT board are connected via WLAN, through an additional computer. From the Android app commands can be generated via buttons or a graphical interface, which are received by the NXT and the robot arm controls. The control of the arm is written in Python. As in robotics, the ROS framework is used for communication.
 \end{abstract}
 
 %\begin{IEEEkeywords}
@@ -74,7 +74,6 @@ Also some private projects like in \cite{onlHackster} show how to control a home
 \section{Proposed Approach}\label{sec:approach}
 
 \subsection{Requirements Engineering}\label{sec:requirements}
-\todo[author=Beide, inline]{what should the arm be able to achieve in the end? How should the app look like and which functions does it have to provide?}
 The app should have the ability to control the arm via a graphical interface. To control the joints individually, there should also be a possibility to adjust the individual joints via buttons or sliders. Since the servomotors are likely to drift there should be a way to recalibrate the arm at any time.
 \\\\
 The arm should be completely controllable by means of an APP via ROS. Furthermore, the goal is to build the arm completely from Lego Technic. In addition, the arm should be kept as light as possible in order to lift light 3D printed objects. It should also have a comfortable size so that the arm can be demonstrated in the teaching.
