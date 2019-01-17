@@ -42,7 +42,7 @@ benjamin.schaefer@htwg-konstanz.de}
 \maketitle
 
 \begin{abstract}
-In this document, a method for building and controlling a robot arm using an Android APP is proposed. The Android phone and the NXT board are connected via WLAN, through an additional computer. From the Android app commands can be generated via buttons or a graphical interface, which are received by the NXT and the robot arm controls. The control of the arm is written in Python. As in robotics, the ROS framework is used for communication.
+In this work, a method for building and controlling a robot arm using an Android APP is proposed. The Android phone and the NXT board are connected via WLAN, through an additional computer. From the Android app commands can be generated via buttons or a graphical interface, which are received by the NXT and the robot arm controls. The control of the arm is written in Python. As in robotics, the ROS framework is used for communication.
 \end{abstract}
 
 %\begin{IEEEkeywords}
@@ -50,39 +50,30 @@ In this document, a method for building and controlling a robot arm using an And
 %\end{IEEEkeywords}\
 
 \section{Introduction / Motivation}
-\begin{itemize}
-	\item control of a robotic arm is a fundamental task in robotics - easy hands-on experience for everybody to this fundamental robotic application with this paper and the created low cost LEGO 3-DoF (\textit{Degrees of Freedom}) robot arm  (incl. instructions)
-	\item application and hardware could be used in basic lecture "Grundlagen der mobilen Robotik" to better understand robot kinematics, ROS and a bit of perception
-	\item recycling of old and unused hardware of the robotics lab at the HTWG Konstanz
-	\item typical industrial applications to control a robotic arm run on more powerful hardware and often offer a complicated and - for beginners - confusing GUI, \todo[author=Christoph, inline]{insert example(s)} so we developed an easy to use mobile application for Android platforms
-	\item ROS because widely used, very modular/extensible and basic framework which almost every student starting with robotics has to get in touch with
-\end{itemize}
+Control of a robotic arm is a fundamental task in robotics. With this theoretical work and practical implementation we want to give an easy hands-on experience to everyone who wants to start with robotics.\\
 \par
-
-\todo[author=Christoph, inline]{new paragraph - description of background and main ''problem''}
-\begin{itemize}
-	\item which platform to choose for controlling the  arm and driving the motors (Arduino, Raspberry, etc.) - should consume as little energy as possible,  should be flexible and portable
-	\todo[author=Christoph, inline]{note that in \ref{sec:platform}}
-	\item another aspect \arrowright how should the application on the mobile device communication with the controlling device \arrowright BT, WiFi, (lost of steering commands due to radio lacks etc.)
-	\item arm construction \arrowright not too many components, not too heavy so that the motors are able to drive the arm even with more than one joint and with gripper load (to demonstrate gripping)
-	\item app \arrowright 
-\end{itemize}
-Constructing a robot arm generally leads to some difficulties.
+The application and hardware should fulfill a quality which allows it to be used as example in basic robotic lectures at the HTWG Konstanz to give students a clear insight in robot kinematics and the established robotic framework \href{http://www.ros.org/}{\textit{Robot Operating System}}, which is also taught in lectures at the HTWG - everything combined in a portable format. 
+Another goal was to recycle old and unused hardware of the robotics lab at the HTWG Konstanz and to try to use as few newly bought parts as possible.
+\\
+\par
+Constructing a robotic arm and developing a mobile application for robotics generally lead to some difficulties.
+For the mechanical/electrical part there are often a lot of parts which have to be assembled in a somewhat complex way - if you don't want to buy new stuff and if you want to achieve a satisfying accuracy of the arm. The system should furthermore be able to drive the arm even with more than one joint and with gripper load (to demonstrate basic gripping).
+Typical industrial applications run on more powerful hardware and often offer a complicated and - for beginners - confusing user interface. One also has to deal with the loss of control commands due to radio lacks (if controlled via WiFi or Bluetooth). So an easy to use mobile application for Android platforms has to be developed. 
 
 \section{State of the Art}
-Although current approaches such as in \cite{onlIEEEApp-Arm} already control robotic arms using an app, but here usually an Arduino or a Raspberry Pi is used to control the arm. However, no hardware that can be reused from the lab is used here, and no known robotic frameworks are used here, which makes an extension or a rebuild more sophisticated Arms made from Lego Technic as in \cite{onlNXT-2DOF} have already been built, but these only offer two DoF and can only lift very light objects due to the low gear ratio. However, in order to be able to show kinematics and the problems with robotic arms in teaching, at least three DoF are necessary.
+Although current approaches such as in \cite{onlIEEEApp-Arm} already control robotic arms using an app, but here usually an Arduino or a Raspberry Pi is used to control the arm. However, no hardware that can be reused from the lab is used here, and no known robotic frameworks are used here, which makes an extension or a rebuild more sophisticated Arms made from Lego Technic as in \cite{onlNXT-2DOF} have already been built, but these only offer two Degrees of Freedom (\textit{DoF}) and can only lift very light objects due to the low gear ratio. However, in order to be able to show kinematics and the problems with robotic arms in teaching, at least three DoF are necessary.
 Also some private projects like in \cite{onlHackster} show how to control a homemade arm via an app.
 \section{Proposed Approach}\label{sec:approach}
 
 \subsection{Requirements Engineering}\label{sec:requirements}
-The app should have the ability to control the arm via a graphical interface. To control the joints individually, there should also be a possibility to adjust the individual joints via buttons or sliders. Since the servomotors are likely to drift there should be a way to re-calibrate the arm at any time.
+The app should have the ability to control the arm via a graphical interface. To control the joints individually, there should also be a possibility to adjust the individual joints via buttons or sliders. Since the servomotors are likely to drift away there should be a way to re-calibrate the arm at any time.
 \\\\
-The arm should be completely controllable by means of an APP via ROS. Furthermore, the goal is to build the arm completely from Lego Technic. In addition, the arm should be kept as light as possible in order to lift light 3D printed objects. It should also have a comfortable size so that the arm can be demonstrated in the teaching.
+The arm should be completely controllable by means of an mobile app via ROS. As the robotics lab at the HTWG has a lot of LEGO Technic remainders, the goal is to build the arm completely from these parts. In addition, the arm should be kept as light as possible in order to lift light 3D printed objects. It should also have a comfortable size and consume as little energy as possible so that the arm can be demonstrated in the teaching. 
 
 \subsection{Platform Decision}\label{sec:platform}
 Since the arm and the app should be used for teaching, there was a variety of hardware to choose from. In addition, one goal was to use existing and disused hardware. Thus, the decision quickly fell on the NXT bricks of Lego Mindstorm [1]. There are enough bricks as well as sensors and motors in the lab. In addition, from the existing Lego technology also the arm can be constructed. Since Lego Technic is made of lightweight plastic, the finished arm can also be taken to a lecture and presented.\\
 There was also a choice of Raspberry Pi's or Arduinos, but here it would have been necessary to order hardware such as motors or parts for the arm.\\
-Thus, it offered to use the Lego NXT's, since no hardware needs to be ordered here and disused hardware is used again.
+Thus, it offered to use the Lego NXT's, since no hardware needs to be ordered here and disused hardware is used again. For basic communication and underlying framework we decided for ROS. It is widely used in the field of robotics, very modular/extensible and almost every student starting with robotics has to get in touch with it.
 
 \subsection{Arm Construction}\label{sec:construction}
 \begin{figure}[bt] 
@@ -91,30 +82,23 @@ Thus, it offered to use the Lego NXT's, since no hardware needs to be ordered he
 	\caption[caption]{Figure of the Lego Technic arm. The lower joint is marked in red and the upper joint in blue}
 	\label{fig:arm_full}
 \end{figure}
-\begin{figure}[bt] 
-	\centering
-	\includegraphics[width=\textwidth/2]{img/control_arm.png}
-	\caption[caption]{Activity diagram of the Arm}
-\label{fig:activitiy_arm}
-\end{figure}
-
-The arm, which can be seen in Figure 1, was designed entirely from Lego Technic. For this purpose, 2 NXT bricks were used. In addition, 4 motors and a touch sensor were used. An NXT was used to control the two arm joints, as well as the gripper. Since the NXTs only have three ports for motors, a second NXT was needed to rotate the base.\\
+The arm, which can be seen in figure \ref{fig:arm_full}, was designed entirely from Lego Technic. For this purpose, two NXT bricks were used. In addition, 4 motors and a touch sensor were used. An NXT was used to control the two arm joints, as well as the gripper. Since the NXTs only have three ports for motors, a second NXT was needed to rotate the base.\\
 The servomotors have a built-in rotation sensor with an accuracy of 1 degree. Since these servomotors only have a torque of about 12 N.cm, a translation has been built into the wrist joint so that the motors can move the arm. For this purpose, a translation of 1/42 was used at the lower joint (red circle). The engine's ratio at the upper joint (blue circle) was 2/25.\\
 In order to keep the arm as light as possible and to relieve the engines, sensors on the arm itself were completely dispensed with. However, since the engines have to be initialized, a touch sensor has been installed on the base to initialize the first arm articulated. The initialization of the second joint was solved by the torque of the motors, as there is less weight of the arm.
 
 \subsection{Algorithms}\label{sec:algorithms}
-\begin{figure}[bt] 
+\subsubsection{Calibration}\label{sec:calibration}
+\begin{figure}[htbp] 
 	\centering
 	\includegraphics[width=\textwidth/2]{img/calibration.png}
 	\caption[caption]{Activity diagram of the calibration process}
 \label{fig:calibration}
 \end{figure}
-The following describes the calibration procedure, which is shown in Figure 2. Since the servomotors can only be controlled by the effort and have no encoder, the starting position of the motors is unknown. Therefore, these must be calibrated. A touch sensor is used for the lower joint. The lower motor rotates until the touch sensor responds to a touch. Then the upper arm is calibrated. Here, the engines rotate with the least force so long, with which the motors can just turn until the joint is in the final position and the engines can not turn, because the effort is too great. In order not to burden the motors unnecessarily, the calibration process is terminated as soon as a certain delta has been exceeded. Finally, the same procedure is repeated for the gripper.
+The following describes the calibration procedure, which is shown in figure \ref{fig:calibration}. Since the servomotors can only be controlled by the effort and have no absolute encoder, the starting position of the motors is unknown. Therefore, these must be calibrated. A touch sensor is used for the lower joint. The lower motor rotates until the touch sensor responds to a touch. Then the upper arm is calibrated. Here, the engines rotate with the least force so long, with which the motors can just turn until the joint is in the final position and the engines can not turn, because the effort is too great. In order not to burden the motors unnecessarily, the calibration process is terminated as soon as a certain delta has been exceeded. Finally, the same procedure is repeated for the gripper.
 
-\subsubsection{Kinematics}\label{sec:kinematics}
-In order to control the arm it is essential to solve either it's forward or inverse kinematics. For our application, we need both problems to be solved. Users of the application should be able to directly control each joint individually (forward kinematics) as well as to move the TCP into a desired position (inverse kinematics). We will first take a look at the calculation of the forward kinematics and then introduce a short geometric solution of the inverse kinematics for our 3-DoF arm.
-\todo[author=Christoph, inline]{TCP - list of abbreviations may be necessary}
-\todo[author=Beide, inline]{measurement of arm dimensions}
+\subsubsection{Forward Kinematics}\label{sec:forwardkinematics}
+In order to control the arm it is essential to solve either it's forward or inverse kinematics. For our application, we need both problems to be solved. Users of the application should be able to directly control each joint individually (forward kinematics) as well as to move the Tool Center Point (\textit{TCP}) into a desired position (inverse kinematics). We will first take a look at the calculation of the forward kinematics and then introduce a short geometric solution of the inverse kinematics for our 3-DoF arm.
+
 \par
 The goal of forward kinematics is to determine the pose (position and orientation) of the TCP for a given set of joint angles. The pose of the TCP regarding the origin of the robot arm can be described as a concatenation of $n$ transformations, where $n$ is the number of joints, of which every one has its own coordinate system. For our case $n$ is 3:
 \begin{equation}\label{eq:trans_matrix}
@@ -145,6 +129,7 @@ Note that one has to use homogeneous coordinates here. Also one should remember 
 \\
 \par
 
+\subsubsection{Inverse Kinematics}\label{sec:inversekinematics}
 As we saw previously, forward kinematics is a function $f$ with reference to a set of joint angles $\theta_i$. The goal of inverse kinematics is to calculate a set of joint angles from a desired TCP-pose. So obviously what we are searching for is the inverse of $f$:
 
 \begin{equation}
@@ -226,13 +211,13 @@ The blue components in figure \ref{fig:app_pipeline} represent modules in our ap
 This activity offers buttons to calibrate the whole arm and to control each of the joints directly.
 
 \subsubsection{TCP Control Activity}
-This activity offers a GUI on which the robot arm is pictured (schematically). The user can tap on any point in a predefined operational area of the robot and thereby determining the next pose of the TCP. If the inverse kinematics module, whose theory was described in section \ref{sec:kinematics}, finds a valid configuration for this point, the angles are transmitted to the Action Client Module (\ref{sec:actionclient}).
+This activity offers a GUI on which the robot arm is pictured (schematically). The user can tap on any point in a predefined operational area of the robot and thereby determining the next pose of the TCP. If the inverse kinematics module, whose theory was described in section \ref{sec:inversekinematics}, finds a valid configuration for this point, the angles are transmitted to the Action Client Module (\ref{sec:actionclient}).
 
 \subsubsection{Forward Kinematics}
-This module takes an angle configuration and calculates the resulting TCP pose as described in section \ref{sec:kinematics}.
+This module takes an angle configuration and calculates the resulting TCP pose as described in section \ref{sec:forwardkinematics}.
 
 \subsubsection{Inverse Kinematics}
-This module takes x- and y-coordinates and calculates a possible angle configuration as described in section \ref{sec:kinematics}.
+This module takes x- and y-coordinates and calculates a possible angle configuration as described in section \ref{sec:inversekinematics}.
 
 \subsubsection{ROS Action Server}\label{sec:actionserver}
 The Action Server is built with the \href{https://wiki.ros.org/actionlib}{actionlib package} from ROS. The actionlib stack provides a standardized interface for handling with highlevel task, so it is suitable for our use case. The module receives goal angles and sends the necessary commands to the ROS NXT Node (\ref{sec:nxt_node}) and provides continuous feedback and result information for this task.
@@ -241,26 +226,22 @@ The Action Server is built with the \href{https://wiki.ros.org/actionlib}{action
 The Action Client is also built with the actionlib package from ROS. It sends the goal angles to the Action Server and handles the feedback and result information. 
 
 \subsubsection{ROS NXT Control Node}\label{sec:nxt_node}
-This module is responsible for the initial hardware setup of the NXT bricks. The used motors, sensors and their respective ports are specified in a configuration file and setup by this module. It also controls these hardware devices by sending steering commands to the device ports and provides the current sensor states.
-
-\subsection{Expected Results}\label{sec:expectedresults}
-\todo[author=Christoph, inline]{speed, accuracy, ...}
+This module is responsible for the initial hardware setup of the NXT bricks. The used motors, sensors and their respective ports are specified in a configuration file and setup by this module. It also controls these hardware devices by sending steering commands to the device ports and it provides the current sensor states.
 
 \section{Results}
 It was shown that a 3DOF arm built from Lego Technic and controlled with a NXT is excellently accessible via a mobile app. In addition, the arm of 25x25x30cm has a portable size and can thus be well used for teaching experiments.\\
 To test the repeatability of the wrists, they were repeatedly moved 45 degrees from the starting position. Figure 6 shows the positions that were approached with the lower joint. After 10 attempts, the accuracy is + -0.5 degrees. In comparison, Figure 7 shows the positions approached by the upper joint. This shows an accuracy of + - 1.0 degrees. However, this is due to the lower translation.
-\begin{figure}[tb]
-	\centering
-	\begin{minipage}{0.24\textwidth}
-		\centering
-		\includegraphics[width=0.9\textwidth]{img/angle_lower} 
-		\caption{Angular positions of the lower arm}
-	\end{minipage}\hfill
-	\begin{minipage}{0.24\textwidth}
-		\centering
-		\includegraphics[width=0.9\textwidth]{img/angle_upper} 
-		\caption{Angular positions of the upper arm}
-	\end{minipage}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[scale=0.3]{img/angle_lower.png}}
+	\caption{Angular positions of the lower arm.}
+	\label{fig:lowerjointprecision}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[scale=0.3]{img/angle_upper.png}}
+	\caption{Angular positions of the lower arm.}
+	\label{fig:upperjointprecision}
 \end{figure}
 
 \section{Conclusion}
@@ -268,12 +249,6 @@ The NXT can be used to control a robot arm with a smartphone from a remote locat
 By using ROS this scenario can be extended quickly, e.g. by multiple users or a second arm. Despite the rather coarse Lego Technic parts, the arm has a relatively high accuracy and is ideal for demonstrations or teaching.
 
 \section{Further Work}
-\begin{itemize}
-	\item 3D graphics in App
-	\item EV3
-	\item algorithms
-	\item external better sensors to optimize
-\end{itemize}
 In further work, the NXT could be exchanged for a LEGO EV3 brick. On the one hand, the EV3 has one additional port to connect a sensor/device. On the other hand, it offers a WiFi interface, which eliminates the need for a laptop as connection supplier between smartphone and arm.
 Currently the app offers only a 2D view of the arm. For a better operation a 3D view could be developed.
 Another important point would be to install more and better external sensors to achieve a higher positional accuracy of the arm.
