@@ -212,15 +212,21 @@ With having calculated $\alpha$, $\beta$ and $\chi$, one can easily get $\theta_
 \end{equation}
 
 \subsection{App Development}\label{sec:development}
-\todo[author=Christoph, inline]{communication/process description, ROS, navigation strategy, ... }
+The app consists of two major activities and five major components, which will be described shortly in this paragraph. Figure \ref{fig:app_pipeline} shows the pipeline after a user has tapped on the screen to determine a TCP pose.
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[scale=0.15]{img/app_pipeline.png}}
+	\caption{Control flow diagram of the main components of the app. Shows the pipeline after a user has tapped on the screen to determine a TCP pose.}
+	\label{fig:app_pipeline}
+\end{figure}
+
+The blue components in figure \ref{fig:app_pipeline} represent modules in our app, the labeled arrows between them describe the control/information flow.
 
 \subsubsection{Joint Control Activity}
-\todo[author=Benni, inline]{Screenshot}
 This activity offers buttons to calibrate the whole arm and to control each of the joints directly.
 
 \subsubsection{TCP Control Activity}
-\todo[author=Benni, inline]{Screenshot}
-This activity offers a GUI on which the robot arm is pictured (schematically). The user can tap on any point in a predefined operational area of the robot and thereby determining the next pose of the TCP. If the inverse kinematics module, whose theory was described in section \ref{sec:kinematics}, finds a valid configuration for this point, the angles are transmitted to the ActionClient Module (\ref{sec:actionclient}).
+This activity offers a GUI on which the robot arm is pictured (schematically). The user can tap on any point in a predefined operational area of the robot and thereby determining the next pose of the TCP. If the inverse kinematics module, whose theory was described in section \ref{sec:kinematics}, finds a valid configuration for this point, the angles are transmitted to the Action Client Module (\ref{sec:actionclient}).
 
 \subsubsection{Forward Kinematics}
 This module takes an angle configuration and calculates the resulting TCP pose as described in section \ref{sec:kinematics}.
@@ -228,11 +234,14 @@ This module takes an angle configuration and calculates the resulting TCP pose a
 \subsubsection{Inverse Kinematics}
 This module takes x- and y-coordinates and calculates a possible angle configuration as described in section \ref{sec:kinematics}.
 
-\subsubsection{ROS ActionClient}\label{sec:actionclient}
+\subsubsection{ROS Action Server}\label{sec:actionserver}
+The Action Server is built with the \href{https://wiki.ros.org/actionlib}{actionlib package} from ROS. The actionlib stack provides a standardized interface for handling with highlevel task, so it is suitable for our use case. The module receives goal angles and sends the necessary commands to the ROS NXT Node (\ref{sec:nxt_node}) and provides continuous feedback and result information for this task.
 
-\subsubsection{ROS ActionServer}
+\subsubsection{ROS Action Client}\label{sec:actionclient}
+The Action Client is also built with the actionlib package from ROS. It sends the goal angles to the Action Server and handles the feedback and result information. 
 
-\subsubsection{ROS NXT Control Node}
+\subsubsection{ROS NXT Control Node}\label{sec:nxt_node}
+This module is responsible for the initial hardware setup of the NXT bricks. The used motors, sensors and their respective ports are specified in a configuration file and setup by this module. It also controls these hardware devices by sending steering commands to the device ports and provides the current sensor states.
 
 \subsection{Expected Results}\label{sec:expectedresults}
 \todo[author=Christoph, inline]{speed, accuracy, ...}
