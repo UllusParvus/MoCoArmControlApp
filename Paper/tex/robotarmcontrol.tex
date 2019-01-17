@@ -247,6 +247,21 @@ This module is responsible for the initial hardware setup of the NXT bricks. The
 \todo[author=Christoph, inline]{speed, accuracy, ...}
 
 \section{Results}
+It was shown that a 3DOF arm built from Lego Technic and controlled with a NXT is excellently accessible via a mobile app. In addition, the arm of 25x25x30cm has a portable size and can thus be well used for teaching experiments.\\
+To test the repeatability of the wrists, they were repeatedly moved 45 degrees from the starting position. Figure 6 shows the positions that were approached with the lower joint. After 10 attempts, the accuracy is + -0.5 degrees. In comparison, Figure 7 shows the positions approached by the upper joint. This shows an accuracy of + - 1.0 degrees. However, this is due to the lower translation.
+\begin{figure}[tb]
+	\centering
+	\begin{minipage}{0.24\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{img/angle_lower} 
+		\caption{Angular positions of the lower arm}
+	\end{minipage}\hfill
+	\begin{minipage}{0.24\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{img/angle_upper} 
+		\caption{Angular positions of the upper arm}
+	\end{minipage}
+\end{figure}
 
 \section{Conclusion}
 The NXT can be used to control a robot arm with a smartphone from a remote location. The present scenario has several disadvantages, e.g. restrictions for cables and an additional computer.
