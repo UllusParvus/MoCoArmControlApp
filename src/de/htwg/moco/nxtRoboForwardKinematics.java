@@ -1,5 +1,13 @@
 package de.htwg.moco;
 
+/**
+ * This class provides forward kinematics calculations for any kinematic system with two joints,
+ * where the connected parts are of static length (no sliding joints) and are rotatable.
+ *
+ * @author Christoph Ulrich
+ * @author Benjamin Schaefer
+ */
+
 public class nxtRoboForwardKinematics {
     private double l1;
     private double l2;
@@ -23,6 +31,11 @@ public class nxtRoboForwardKinematics {
         this.l2 = l2;
     }
 
+    /**
+     * Initializes the two transformation matrices with the arm part lenghts and the set of joint angles
+     * @param q1 Joint 1 angle in radians.
+     * @param q2 Joint 2 angle in radians.
+     */
     private void initMatrices(double q1, double q2){
         transformation0To1 = new double[][]{{Math.cos(q1), -Math.sin(q1), 0, this.l1 * Math.cos(q1)},
                 {Math.sin(q1), Math.cos(q1), 0, this.l1 * Math.sin(q1)},
@@ -35,6 +48,11 @@ public class nxtRoboForwardKinematics {
                 {0, 0, 0, 1}};
     }
 
+    /**
+     * Calculates the cartesian end point of the two arm elements.
+     * @param q1 Joint 1 angle in radians.
+     * @param q2 Joint 2 angle in radians.
+     */
     public void doForwardKinematics(double q1, double q2){
         initMatrices(q1, q2);
 

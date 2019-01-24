@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="b_gripper_p">Gripper +</string>
-    <string name="b_gripper_m">Kalibrieren</string>
+    <string name="b_gripper_m">Gripper -</string>
     <string name="b_joint_2_p">Gelenk 2 +</string>
     <string name="b_joint_2_m">Gelenk 2 -</string>
     <string name="b_joint_1_p">Gelenk 1 +</string>

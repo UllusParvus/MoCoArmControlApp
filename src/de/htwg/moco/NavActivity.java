@@ -15,9 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-
+/**
+ * This class controls the navigation activity.
+ */
 public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private boolean firstStart = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +81,13 @@ public class NavActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * The {@link VisualTCPControlActivity} has to know whether it was started for the first time
+     * to get the calibration values from the ROS node controlling the corresponding NXT brick.
+     * If not started for the first time, it gets these values from the shared preferences.
+     * @param item The menu item which was selected by the user.
+     * @return Always returns true.
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -89,8 +100,11 @@ public class NavActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_visual_tcp_control) {
             Intent visualTCPControl = new Intent(this, VisualTCPControlActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("firstStart", firstStart);
+            firstStart = false;
+            visualTCPControl.putExtras(bundle);
             startActivity(visualTCPControl);
-
 
         } else if (id == R.id.nav_share) {
 
@@ -103,22 +117,4 @@ public class NavActivity extends AppCompatActivity
         return true;
     }
 
-    /*
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.d("onActivityResult", "started");
-        if (requestCode == 1) {
-            Log.d("onActivityResult", "requestCode == 1");
-            if(resultCode == RESULT_OK) {
-                Log.d("onActivityResult", "RESULT_OK");
-                Double joint1AngleDegrees = data.getDoubleExtra(VisualTCPControlActivity.JOINT_1_ANGLE_DEGREES, 45);
-                Double joint2AngleDegrees = data.getDoubleExtra(VisualTCPControlActivity.JOINT_2_ANGLE_DEGREES, 90);
-                Log.d("onActivityResult", "joint1AngleDegrees -> " + joint1AngleDegrees + ", joint2AngleDegrees -> " + joint2AngleDegrees);
-            } else {
-                Log.d("onActivityResult", "NOT RESULT_OK -> " + resultCode);
-            }
-        }
-    }*/
 }

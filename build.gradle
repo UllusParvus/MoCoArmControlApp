@@ -10,6 +10,7 @@ dependencies {
     compile 'org.ros.rosjava_messages:actionlib_msgs:1.12.6'
     compile files('lib/rosjava_actionlib-0.2.0.jar')
     compile project(path: ':android_10')
+    compile project(path: ':android_10')
 }
 
 apply plugin: 'com.android.application'

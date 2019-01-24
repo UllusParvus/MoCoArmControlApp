@@ -1,62 +1,63 @@
 package de.htwg.moco;
 
-import android.util.Log;
-
-import org.ros.message.MessageListener;
 import org.ros.namespace.GraphName;
 import org.ros.node.AbstractNodeMain;
 import org.ros.node.ConnectedNode;
 import org.ros.node.topic.Publisher;
-import org.ros.node.topic.Subscriber;
 
 import nxt_msgs.JointCommand;
-import nxt_msgs.Range;
+
+/**
+ * This class provides two ROS publishers for publishing the nxt commands to the corresponding topic.
+ *
+ * @author Christoph Ulrich
+ * @author Benjamin Schaefer
+ * @see <a href="https://wiki.ros.org/Topics">ROS topics</a>
+ * @see <a href="http://wiki.ros.org/roscpp/Overview/Publishers%20and%20Subscribers">ROS Subscriber and Publisher</a>
+ */
 
 public class JointTalker extends AbstractNodeMain {
-    private String topic_name;
-
-    private Publisher<JointCommand> joint_publisher;
-    private Subscriber<Range> ultrasonic_sub;
-
-    private Range us_range;
-
-    public JointTalker() {
-        this.topic_name = "/nxt_1/joint_command";
-    }
-
-    public JointTalker(int nxt_number) {
-        this.topic_name = "/nxt_" + nxt_number + "/joint_command";
-    }
+    private Publisher<JointCommand> nxt1_publisher;
+    private Publisher<JointCommand> nxt2_publisher;
 
     public GraphName getDefaultNodeName() {
-        return GraphName.of("app/" + topic_name + "_publisher");
+        return GraphName.of("app/nxt_publisher");
     }
 
+    /**
+     * Creates two ROS publishers.
+     * @param connectedNode
+     */
     public void onStart(ConnectedNode connectedNode) {
-        joint_publisher = connectedNode.newPublisher(this.topic_name, "nxt_msgs/JointCommand");
-        ultrasonic_sub = connectedNode.newSubscriber("/ultrasonic_sensor", "nxt_msgs/Range");
-        ultrasonic_sub.addMessageListener(new MessageListener<Range>() {
-            @Override
-            public void onNewMessage(Range range) {
-                us_range = range;
-                Log.i("Sub" , "got range " + us_range.getRange() );
-            }
-        }, 1);
-
+        nxt1_publisher = connectedNode.newPublisher("/nxt_1/joint_command", "nxt_msgs/JointCommand");
+        nxt2_publisher = connectedNode.newPublisher("/nxt_2/joint_command", "nxt_msgs/JointCommand");
     }
 
-    // TODO: change the loop to nxt messages!
-    public void loop(double effort, String motor_name) {
-        JointCommand nxt_msg = joint_publisher.newMessage();
+    /**
+     * Publishes a nxt joint command message to the NXT brick controlling the upper joints.
+     * @param effort Double between -1.5 and 1.5 which specifies the "power" with which the corresponding
+     *               motor is driven.
+     * @param motor_name The corresponding motor name.
+     */
+    public void loop_nxt1(double effort, String motor_name) {
+        JointCommand nxt_msg = nxt1_publisher.newMessage();
         nxt_msg.setEffort(effort);
         nxt_msg.setName(motor_name);
-        joint_publisher.publish(nxt_msg);
-
+        nxt1_publisher.publish(nxt_msg);
     }
 
-    public double get_range() {
-        return us_range.getRange();
-
+    /**
+     * Publishes a nxt joint command message to the NXT brick controlling the base.
+     * @param effort Double between -1.5 and 1.5 which specifies the "power" with which the corresponding
+     *               motor is driven.
+     * @param motor_name The corresponding motor name.
+     */
+    public void loop_nxt2(double effort, String motor_name) {
+        JointCommand nxt_msg = nxt2_publisher.newMessage();
+        nxt_msg.setEffort(effort);
+        nxt_msg.setName(motor_name);
+        nxt2_publisher.publish(nxt_msg);
     }
+
 }
 

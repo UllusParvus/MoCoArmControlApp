@@ -8,7 +8,7 @@ package de.htwg.moco;
  *  matrices.
  *
  *
- *  Copied from https://introcs.cs.princeton.edu/java/22library/Matrix.java.html
+ *  !!!COPIED!!! from https://introcs.cs.princeton.edu/java/22library/Matrix.java.html
  *********************************************************************************/
 public class Matrix {
 

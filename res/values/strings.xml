@@ -10,7 +10,7 @@
     <string
         name="b_gripper_p">Gripper +</string>
     <string
-        name="b_gripper_m">Calibrate</string>
+        name="b_gripper_m">Gripper -</string>
     <string
         name="b_joint_2_p">Joint 2 +</string>
     <string
